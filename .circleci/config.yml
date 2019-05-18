@@ -10,13 +10,13 @@ commands:
     steps:
       - restore_cache:
           name: Restore npm dependencies
-          key: npm-{{ checksum "package-lock.json" }}-{{ .Environment.CACHE_VERSION_NPM }}
+          key: npm-{{ checksum "package.json" }}
 
   save_npm:
     steps:
       - save_cache:
           name: Cache npm dependencies
-          key: npm-{{ checksum "package-lock.json" }}-{{ .Environment.CACHE_VERSION_NPM }}
+          key: npm-{{ checksum "package.json" }}
           paths:
             - ~/workspace/node_modules
 
@@ -35,6 +35,7 @@ jobs:
     executor:
       name: default
     steps:
+      - checkout
       - restore_npm
       - run: 
           name: Lint
@@ -45,6 +46,7 @@ jobs:
     executor:
       name: default
     steps:
+      - checkout
       - restore_npm
       - run: 
           name: Build
@@ -55,6 +57,7 @@ jobs:
     executor:
       name: default
     steps:
+      - checkout
       - restore_npm
       - run: 
           name: Test
