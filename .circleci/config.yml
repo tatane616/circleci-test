@@ -35,7 +35,6 @@ jobs:
     executor:
       name: default
     steps:
-      - checkout
       - restore_npm
       - run: 
           name: Lint
@@ -46,7 +45,6 @@ jobs:
     executor:
       name: default
     steps:
-      - checkout
       - restore_npm
       - run: 
           name: Build
@@ -57,7 +55,6 @@ jobs:
     executor:
       name: default
     steps:
-      - checkout
       - restore_npm
       - run: 
           name: Test
