@@ -65,7 +65,7 @@ jobs:
       - save_npm
 
 workflows:
-  pull_request:
+  pull-request:
     jobs:
       - setup
       - lint:
